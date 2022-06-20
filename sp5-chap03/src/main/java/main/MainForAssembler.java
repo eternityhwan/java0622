@@ -61,12 +61,21 @@ public class MainForAssembler {
 		}
 	}
 
+	private static void printHelp() {
+		System.out.println();
+		System.out.println("잘못된 명령입니다. 아래 명령어 사용법을 확인하세요.");
+		System.out.println("명령어 사용법:");
+		System.out.println("new 이메일 이름 암호 암호확인");
+		System.out.println("change 이메일 현재비번 변경비번");
+		System.out.println();
+	}
+
 	private static void processChangeCommand(String[] arg) {
 		if (arg.length != 4) {
 			printHelp();
 			return;
 		}
-		ChangePasswordService changePwdSvc = 
+		ChangePasswordService changePwdSvc =
 				assembler.getChangePasswordService();
 		try {
 			changePwdSvc.changePassword(arg[1], arg[2], arg[3]);
@@ -77,13 +86,5 @@ public class MainForAssembler {
 			System.out.println("이메일과 암호가 일치하지 않습니다.\n");
 		}
 	}
-
-	private static void printHelp() {
-		System.out.println();
-		System.out.println("잘못된 명령입니다. 아래 명령어 사용법을 확인하세요.");
-		System.out.println("명령어 사용법:");
-		System.out.println("new 이메일 이름 암호 암호확인");
-		System.out.println("change 이메일 현재비번 변경비번");
-		System.out.println();
-	}
 }
+
